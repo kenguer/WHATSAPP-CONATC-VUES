@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+    <meta charset="UTF-8">
+    <title>Voye mesaj sou WhatsApp</title>
+</head>
+<body>
+    <h2>Voye yon mesaj sou WhatsApp</h2>
+    <label for="numero">Antre nimewo WhatsApp la:</label><br>
+    <input type="text" id="numero" placeholder="ex: 50912345678"><br><br>
+
+    <label for="mesaj">Ekri mesaj ou:</label><br>
+    <textarea id="mesaj" rows="4" cols="50" placeholder="Ekri mesaj ou isit la..."></textarea><br><br>
+
+    <button onclick="voyeMesaj()">Voye sou WhatsApp</button>
+
+    <script>
+        function voyeMesaj() {
+            const numero = document.getElementById('numero').value;
+            const mesaj = encodeURIComponent(document.getElementById('mesaj').value);
+            if(numero){
+                const link = `https://wa.me/${numero}?text=${mesaj}`;
+                window.open(link, '_blank');
+            } else {
+                alert("Tanpri mete yon nimewo WhatsApp.");
+            }
+        }
+    </script>
+</body>
+</html>
