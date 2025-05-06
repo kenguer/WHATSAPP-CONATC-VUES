@@ -1,28 +1,46 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Contactez-nous</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Rejoins My Team</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h1>Contactez-nous</h1>
-        <div class="button-group">
-            <button id="downloadVcfBtn">Télécharger VCF</button>
-            <button id="shareBtn">Partager sur WhatsApp</button>
-        </div>
-        <p>
-            <a id="channelLink" href="https://whatsapp.com/channel/0029Vb5jwpT7dmeeD32Cgx0c" target="_blank">
-                Cliquez ici pour accéder à la chaîne
-            </a>
-        </p>
-        <p id="infoText">
-            Nombre de contacts VCF générés : 0. Après 3 tentatives échouées, vous ne pourrez plus utiliser le site.
-        </p>
-    </div>
-    <script src="script.js"></script>
+<body style="font-family:sans-serif; padding: 20px; max-width: 600px; margin: auto;">
+
+  <h1 style="color:#003366;">Besoin plus de vues pour votre status WhatsApp ?</h1>
+
+  <a href="https://chat.whatsapp.com/IFL3V0zkeuhFjrlq38nV8H" target="_blank" style="display:inline-block; margin-bottom:20px; background-color:#007bff; color:white; padding:10px 20px; text-decoration:none; border-radius:5px;">Rejoins my Team</a>
+
+  <p>Ajoute votre nom comme l'exemple :</p>
+
+  <form id="userForm">
+    <label>Nom :</label><br>
+    <input type="text" id="name" required style="width:100%; padding:8px;"><br><br>
+    
+    <label>Numéro WhatsApp :</label><br>
+    <input type="tel" id="number" required placeholder="+509xxxxxxxx" style="width:100%; padding:8px;"><br><br>
+
+    <button type="button" onclick="handleInscription()" style="background-color:#28a745; color:white; padding:10px 20px; border:none; border-radius:5px;">S'inscrire</button>
+  </form>
+
+  <div id="vcfSection" style="display:none; margin-top:20px;">
+    <button onclick="generateVCF()" style="background-color:#007bff; color:white; padding:10px 20px; border:none; border-radius:5px;">Télécharger VCF</button>
+  </div>
+
+  <br>
+
+  <a href="https://whatsapp.com/channel/0029Vb5jwpT7dmeeD32Cgx0c" target="_blank" style="color:#007bff; font-weight:bold;">Cliquez ici pour accéder à la chaîne</a>
+
+  <p id="contactCount" style="color:gray; font-size:14px; margin-top:15px;"></p>
+
+  <p style="color:gray; font-size:13px;">
+    Ce fichier VCF contient [X] contacts.<br>
+    Si un utilisateur tente d’y accéder plusieurs fois sans autorisation, il ne pourra plus utiliser le site.<br>
+    Seul l’administrateur peut télécharger le fichier VCF.
+  </p>
+
+  <p style="margin-top:20px; font-size:14px;"><strong>Besoin d'aide ?</strong> Contactez notre assistante WhatsApp : <a href="https://wa.me/18292681149" style="color:#007bff;">+18292681149</a></p>
+
+  <script src="script.js"></script>
 </body>
 </html>
