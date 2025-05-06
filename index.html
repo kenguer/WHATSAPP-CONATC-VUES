@@ -1,37 +1,75 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Besoin plus de vues ?</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rejoignez TEAMÉ - Augmentez vos vues WhatsApp</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+  <header>
+    <h1>Augmentez vos vues sur WhatsApp</h1>
+    <h2>Rejoignez TEAMÉ et boostez votre visibilité</h2>
+  </header>
 
-  <h1>Besoin plus de vues pour votre statut WhatsApp ?</h1>
-  <p>Ajoutez votre nom comme l'exemple pour rejoindre notre liste !</p>
+  <div class="container">
+    <div class="card">
+      <form id="contact-form">
+        <div class="input-group">
+          <label for="nom">Votre nom</label>
+          <input type="text" id="nom" name="nom" placeholder="Entrez votre nom complet" required />
+        </div>
+        
+        <div class="input-group">
+          <label for="numero">Votre numéro WhatsApp</label>
+          <input type="tel" id="numero" name="numero" placeholder="+33 6 XX XX XX XX" required />
+        </div>
+        
+        <button type="submit" id="submit-btn"><span>S'inscrire maintenant</span></button>
+      </form>
+    </div>
 
-  <form id="userForm" onsubmit="event.preventDefault(); handleInscription();">
-    <input type="text" id="name" placeholder="Nom : ex Ralph" required>
-    <input type="tel" id="number" placeholder="Numéro : ex +18292681149" required>
-    <button type="button" onclick="handleInscription()">Inscrit</button>
-  </form>
+    <div id="after-submit" class="card">
+      <div class="success-message">
+        <i class="fas fa-check-circle success-icon"></i>
+        <div>
+          <strong>Inscription réussie !</strong>
+          <p>Votre profil a été ajouté à notre réseau.</p>
+        </div>
+      </div>
 
-  <div id="contactCount"></div>
+      <div class="counter">
+        <div>
+          <span class="counter-value" id="contact-count">0</span>
+          <span class="counter-label">Membres inscrits</span>
+        </div>
+      </div>
 
-  <div id="vcfSection" style="display:none;">
-    <button onclick="generateVCF()">Télécharger le fichier VCF</button>
+      <div class="links">
+        <a href="https://chat.whatsapp.com/IFL3V0zkeuhFjrlq38nV8H" target="_blank" class="whatsapp-link">
+          <i class="fab fa-whatsapp icon"></i>
+          Rejoindre le groupe WhatsApp
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb5jwpT7dmeeD32Cgx0c" target="_blank" class="whatsapp-link">
+          <i class="fas fa-broadcast-tower icon"></i>
+          S'abonner à notre chaîne
+        </a>
+      </div>
+
+      <div class="admin-section">
+        <a id="download-vcf" download="contacts.vcf">
+          <i class="fas fa-download icon"></i>
+          Télécharger le fichier VCF (Admin)
+        </a>
+      </div>
+
+      <div class="contact-info">
+        <p>En cas de problème, contactez l'assistant: <a href="https://wa.me/18292681149"><i class="fab fa-whatsapp"></i> +1 829 268 1149</a></p>
+      </div>
+    </div>
   </div>
-
-  <p style="margin-top: 30px; font-size: 14px; color: #555;">
-    Seul l’administrateur peut télécharger ce fichier.<br>
-    Si un utilisateur tente d’y accéder plusieurs fois sans autorisation, il sera bloqué.
-  </p>
-
-  <p style="font-size: 12px; color: #777;">
-    Assistance : +18292681149
-  </p>
 
   <script src="script.js"></script>
 </body>
-</html>
+</html
