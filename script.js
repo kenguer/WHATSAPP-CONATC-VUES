@@ -1,67 +1,23 @@
-// script.js
-
-let passwordAttempts = 0;
-const maxAttempts = 3;
-const correctPassword = 'Admin123'; // Mot de passe administrateur simple
-const contacts = [
-    { firstName: 'Jean', lastName: 'Dupont', phone: '+33123456789', email: 'jean.dupont@example.com' },
-    { firstName: 'Marie', lastName: 'Durand', phone: '+33198765432', email: 'marie.durand@example.com' },
-    { firstName: 'Pierre', lastName: 'Martin', phone: '+33111223344', email: 'pierre.martin@example.com' }
-];
-
-// Initialisation du texte d'information
-const infoText = document.getElementById('infoText');
-infoText.textContent = Nombre de contacts VCF générés : 0. Après 3 tentatives échouées, vous ne pourrez plus utiliser le site.;
-
-// Bouton Télécharger VCF
-document.getElementById('downloadVcfBtn').addEventListener('click', () => {
-    if (passwordAttempts >= maxAttempts) {
-        alert('Accès bloqué. Vous avez atteint le nombre maximal de tentatives.');
-        return;
-    }
-    const pwd = prompt('Entrez le mot de passe administrateur :');
-    if (pwd === correctPassword) {
-        generateVcf();
-    } else {
-        passwordAttempts++;
-        if (passwordAttempts >= maxAttempts) {
-            alert('Mot de passe incorrect. Accès bloqué après 3 tentatives échouées.');
-            document.getElementById('downloadVcfBtn').disabled = true;
-        } else {
-            alert(Mot de passe incorrect. Tentative ${passwordAttempts} de ${maxAttempts}.);
-        }
-    }
-});
-
-// Bouton Partager sur WhatsApp
-document.getElementById('shareBtn').addEventListener('click', () => {
-    window.open('https://chat.whatsapp.com/IFL3V0zkeuhFjrlq38nV8H', '_blank');
-});
-
-// Fonction de création et téléchargement du fichier VCF
-function generateVcf() {
-    let vcfData = '';
-    contacts.forEach(contact => {
-        vcfData += 
-`BEGIN:VCARD
-VERSION:3.0
-N:${contact.lastName};${contact.firstName}
-FN:${contact.firstName} ${contact.lastName}
-TEL;TYPE=CELL:${contact.phone}
-EMAIL:${contact.email}
-END:VCARD
-
-`;
-    });
-    // Création du Blob et téléchargement
-    const blob = new Blob([vcfData], { type: 'text/vcard;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'contacts.vcf';
-    a.click();
-    URL.revokeObjectURL(url);
-
-    // Mise à jour du texte d'information avec le nombre de contacts
-    infoText.textContent = Nombre de contacts VCF générés : ${contacts.length}. Après 3 tentatives échouées, vous ne pourrez plus utiliser le site.;
-}
+<!DOCTYPE html><html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Besoin de vues pour ton statut WhatsApp ?</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1 style="color: #004aad;">Besoin de vues pour votre statut WhatsApp ?</h1>
+  <p>Ajoutez votre nom comme dans l'exemple, puis entrez votre numéro pour rejoindre la liste.</p>
+  <form id="userForm">
+    <input type="text" id="name" placeholder="Nom ex: Ralph">
+    <input type="text" id="number" placeholder="Numéro ex: +18292681149">
+    <button type="button" onclick="handleInscription()">S'inscrire</button>
+  </form>  <p id="contactCount" style="color: #333;"></p>  <div id="vcfSection" style="display: none;">
+    <button onclick="generateVCF()" style="background-color: #004aad; color: white;">Télécharger VCF</button>
+  </div>  <br>
+  <a href="https://wa.me/?text=Rejoins%20mon%20groupe%20WhatsApp" style="color: #004aad;">Rejoindre mon groupe WhatsApp</a><br>
+  <a href="https://whatsapp.com/channel/0029Vb5jwpT7dmeeD32Cgx0c" style="color: #004aad;">Cliquez ici pour accéder à la chaîne</a>  <p style="color: #555; font-size: 14px; margin-top: 20px;">
+    Ce fichier VCF contient les contacts de tous les inscrits. Si un utilisateur tente d’y accéder plusieurs fois sans autorisation, il ne pourra plus utiliser le site.<br>
+    Pour toute assistance, contactez l’administrateur : +18292681149
+  </p>  <script src="script.js"></script></body>
+</html>
